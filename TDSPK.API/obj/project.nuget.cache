@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "36ByzgElePU=",
+  "dgSpecHash": "aB78wJTJfa0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\maria\\source\\repos\\TDSPK\\TDSPK.API\\TDSPK.API.csproj",
+  "projectFilePath": "C:\\3-semestre\\.net\\Api\\TDSPK.API\\TDSPK.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\maria\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\maria\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

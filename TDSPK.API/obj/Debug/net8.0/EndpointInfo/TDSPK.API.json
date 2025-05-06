@@ -1,18 +1,25 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "TDSPK.API",
-    "version": "1.0"
+    "title": "API para cadastro de Photo",
+    "description": "API da turma PK-2025 de Fevereiro",
+    "contact": {
+      "name": "Thiago Keller",
+      "email": "profthiago.vicco@fiap.com.br"
+    },
+    "version": "v1"
   },
   "paths": {
     "/api/Photos": {
       "get": {
         "tags": [
-          "Photos"
+          "Fotos"
         ],
+        "summary": "Retorna uma lista de fotos",
+        "description": "Exemplo de Solicitação:\r\n\r\n    GET api/photos",
         "responses": {
           "200": {
-            "description": "OK",
+            "description": "Retorna uma lista de fotos",
             "content": {
               "text/plain": {
                 "schema": {
@@ -40,33 +47,34 @@
               }
             }
           },
-          "500": {
-            "description": "Internal Server Error"
-          },
           "503": {
-            "description": "Service Unavailable"
+            "description": "Serviço indisponivel"
+          },
+          "500": {
+            "description": "Erro interno do servidor"
           }
         }
       },
       "post": {
         "tags": [
-          "Photos"
+          "Fotos"
         ],
+        "summary": "",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/PhotoRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/PhotoRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/PhotoRequest"
               }
             }
           }
@@ -98,12 +106,14 @@
     "/api/Photos/{id}": {
       "get": {
         "tags": [
-          "Photos"
+          "Fotos"
         ],
+        "summary": "",
         "parameters": [
           {
             "name": "id",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string",
@@ -134,9 +144,154 @@
           }
         }
       },
+      "delete": {
+        "tags": [
+          "Fotos"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/User"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
-          "Photos"
+          "Users"
         ],
         "parameters": [
           {
@@ -153,17 +308,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/User"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/User"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Photo"
+                "$ref": "#/components/schemas/User"
               }
             }
           }
@@ -176,7 +331,7 @@
       },
       "delete": {
         "tags": [
-          "Photos"
+          "Users"
         ],
         "parameters": [
           {
@@ -209,12 +364,77 @@
           },
           "url": {
             "type": "string",
-            "format": "uri",
             "nullable": true
           },
           "date": {
             "type": "string",
             "format": "date-time",
+            "readOnly": true
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PhotoRequest": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StatusType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "dateCreated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusType"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "photos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Photo"
+            },
+            "nullable": true,
             "readOnly": true
           }
         },

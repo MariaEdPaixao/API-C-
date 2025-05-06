@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace TDSPK.API.Infrastructure.Persistence
 {
@@ -10,7 +11,7 @@ namespace TDSPK.API.Infrastructure.Persistence
 
         //1..1
         public Guid UserId { get; private set; }
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         public Photo(string url, Guid userId)
         {

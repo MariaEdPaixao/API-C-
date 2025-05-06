@@ -1,6 +1,8 @@
 
 using Microsoft.EntityFrameworkCore;
-using TDSPK.API.Infrastructure.Context;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
+using TDSPK.API.Infrastructure.Contexts;
 
 namespace TDSPK.API
 {
@@ -15,12 +17,32 @@ namespace TDSPK.API
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+
+            builder.Services.AddSwaggerGen(swagger =>
+            {
+                swagger.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "API para cadastro de Photo",
+                    Version = "v1",
+                    Description = "API da turma PK-2025 de Fevereiro",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Thiago Keller",
+                        Email = "profthiago.vicco@fiap.com.br"
+                    }
+                });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+
+                //incluir os comentarios no SWAGGER
+                swagger.IncludeXmlComments(xmlPath);
+            });
+
             builder.Services.AddDbContext<PhotosContext>(options =>
             {
                 options.UseOracle(builder.Configuration.GetConnectionString("Oracle"));
             });
-
 
             var app = builder.Build();
 
@@ -34,7 +56,6 @@ namespace TDSPK.API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

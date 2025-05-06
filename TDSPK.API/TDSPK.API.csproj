@@ -4,15 +4,20 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\**" />
     <Compile Remove="NovaPasta1\**" />
     <Compile Remove="Repositories\NovaPasta\**" />
+    <Content Remove="Migrations\**" />
     <Content Remove="NovaPasta1\**" />
     <Content Remove="Repositories\NovaPasta\**" />
+    <EmbeddedResource Remove="Migrations\**" />
     <EmbeddedResource Remove="NovaPasta1\**" />
     <EmbeddedResource Remove="Repositories\NovaPasta\**" />
+    <None Remove="Migrations\**" />
     <None Remove="NovaPasta1\**" />
     <None Remove="Repositories\NovaPasta\**" />
   </ItemGroup>

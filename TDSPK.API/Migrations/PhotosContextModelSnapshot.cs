@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
-using TDSPK.API.Infrastructure.Context;
+using TDSPK.API.Infrastructure.Contexts;
 
 #nullable disable
 
@@ -31,23 +31,59 @@ namespace TDSPK.API.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TIMESTAMP(7)");
 
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("NVARCHAR2(200)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("RAW(16)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Photos", (string)null);
+                });
+
+            modelBuilder.Entity("TDSPK.API.Infrastructure.Persistence.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("RAW(16)");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("TIMESTAMP(7)");
 
                     b.Property<DateTime>("DateModified")
                         .HasColumnType("TIMESTAMP(7)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)");
+
                     b.Property<int>("Status")
                         .HasColumnType("NUMBER(10)");
 
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("NVARCHAR2(200)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("Photos", (string)null);
+                    b.ToTable("User");
+                });
+
+            modelBuilder.Entity("TDSPK.API.Infrastructure.Persistence.Photo", b =>
+                {
+                    b.HasOne("TDSPK.API.Infrastructure.Persistence.User", "User")
+                        .WithMany("Photos")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("TDSPK.API.Infrastructure.Persistence.User", b =>
+                {
+                    b.Navigation("Photos");
                 });
 #pragma warning restore 612, 618
         }

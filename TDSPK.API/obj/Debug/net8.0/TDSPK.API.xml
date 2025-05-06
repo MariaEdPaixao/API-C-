@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TDSPK.API</name>
+    </assembly>
+    <members>
+        <member name="M:TDSPK.API.Controllers.PhotosController.GetPhotos">
+            <summary>
+            Retorna uma lista de fotos
+            </summary>
+            <remarks>
+            Exemplo de Solicitação:
+            
+                GET api/photos
+            
+            </remarks>
+            <response code = "200"> Retorna uma lista de fotos</response>
+            <response code = "500"> Erro interno do servidor</response>
+            <response code = "503"> Serviço indisponivel</response>
+        </member>
+        <member name="M:TDSPK.API.Controllers.PhotosController.GetPhoto(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TDSPK.API.Controllers.PhotosController.PostPhoto(TDSPK.API.DTO.PhotoRequest)">
+            <summary>
+            
+            </summary>
+            <param name="photo"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

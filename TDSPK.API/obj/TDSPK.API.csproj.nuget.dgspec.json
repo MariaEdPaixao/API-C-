@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\maria\\source\\repos\\TDSPK\\TDSPK.API\\TDSPK.API.csproj": {}
+    "C:\\3-semestre\\.net\\Api\\TDSPK.API\\TDSPK.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\maria\\source\\repos\\TDSPK\\TDSPK.API\\TDSPK.API.csproj": {
+    "C:\\3-semestre\\.net\\Api\\TDSPK.API\\TDSPK.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\maria\\source\\repos\\TDSPK\\TDSPK.API\\TDSPK.API.csproj",
+        "projectUniqueName": "C:\\3-semestre\\.net\\Api\\TDSPK.API\\TDSPK.API.csproj",
         "projectName": "TDSPK.API",
-        "projectPath": "C:\\Users\\maria\\source\\repos\\TDSPK\\TDSPK.API\\TDSPK.API.csproj",
+        "projectPath": "C:\\3-semestre\\.net\\Api\\TDSPK.API\\TDSPK.API.csproj",
         "packagesPath": "C:\\Users\\maria\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\maria\\source\\repos\\TDSPK\\TDSPK.API\\obj\\",
+        "outputPath": "C:\\3-semestre\\.net\\Api\\TDSPK.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
